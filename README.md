@@ -102,7 +102,7 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 ### __Links 🔗__
 <!-- TODO: update -->
 - Live URL: []()
-- Github Repository: []()
+- Github Repository: [https://github.com/AveryCaldwell/Book-Search-Engine-MERN](https://github.com/AveryCaldwell/Book-Search-Engine-MERN)
 
 <br>
 <hr>

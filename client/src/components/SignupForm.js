@@ -18,14 +18,13 @@ const SignupForm = () => {
     const [validated] = useState(false);
     // set state for alert
     const [showAlert, setShowAlert] = useState(false);
-    // define error state variable
-    const [error, setError] = useState('');
+    // define mutation for adding a user
+    const [addUser] = useMutation(ADD_USER);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setUserFormData({ ...userFormData, [name]: value });
     };
-    const [addUser] = useMutation(ADD_USER);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -37,71 +36,37 @@ const SignupForm = () => {
             event.stopPropagation();
         }
 
-        // replace
-        // try {
-        // const response = await createUser(userFormData);
-        //     if (!response.ok) {
-        //         throw new Error('something went wrong!');
-        //     }
-
-        //     const { token, user } = await response.json();
-        //     console.log(user);
-        //     Auth.login(token);
-        // } catch (err) {
-        //     console.error(err);
-        //     setShowAlert(true);
-        // }
         try {
             const { data } = await addUser({
                 variables: userFormData,
             });
+
             Auth.login(data.addUser.token);
-            setShowAlert(false);
-            setError('');
-            setUserFormData({
-                username: '',
-                email: '',
-                password: '',
-            });
-            // try {
-            //     const [addUser, { error }] = useMutation(ADD_USER);
-            //     const { username, email, password } = userFormData;
-            //     const { data } = await addUser({
-            //         variables: { username, email, password },
-            //     });
-            // Auth.login(data.addUser.token);
         } catch (err) {
             console.error(err);
             setShowAlert(true);
-            setError('Something went wrong!');
         }
+
+        setUserFormData({
+            username: '',
+            email: '',
+            password: '',
+        });
     };
 
     return (
         <>
             {/* This is needed for the validation functionality above */}
             <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-                {/* REPLACE */}
-                {/* <Alert
+                {/* show alert if server response is bad */}
+                <Alert
                     dismissible
                     onClose={() => setShowAlert(false)}
                     show={showAlert}
                     variant='danger'
-                > 
-                                
+                >
                     Something went wrong with your signup!
-                </Alert>  */}
-                {/* show alert if server response is bad */}
-                {error && (
-                    <Alert
-                        dismissible
-                        onClose={() => setShowAlert(false)}
-                        show={showAlert}
-                        variant='danger'
-                    >
-                        {error}
-                    </Alert>
-                )}
+                </Alert>
 
                 <Form.Group className='mb-3'>
                     <Form.Label htmlFor='username'>Username</Form.Label>
@@ -117,7 +82,6 @@ const SignupForm = () => {
                         Username is required!
                     </Form.Control.Feedback>
                 </Form.Group>
-
                 <Form.Group className='mb-3'>
                     <Form.Label htmlFor='email'>Email</Form.Label>
                     <Form.Control
@@ -132,7 +96,6 @@ const SignupForm = () => {
                         Email is required!
                     </Form.Control.Feedback>
                 </Form.Group>
-
                 <Form.Group className='mb-3'>
                     <Form.Label htmlFor='password'>Password</Form.Label>
                     <Form.Control

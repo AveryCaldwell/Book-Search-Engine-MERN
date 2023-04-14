@@ -1,19 +1,5 @@
 // use this to decode a token and get the user's information out of it
 import decode from 'jwt-decode';
-import { setContext } from 'apollo-link-context';
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
-
-const authLink = setContext((_, { headers }) => {
-    // get the authentication token from local storage if it exists
-    const token = localStorage.getItem('id_token');
-    // return the headers to the context so httpLink can read them
-    return {
-        headers: {
-            ...headers,
-            authorization: token ? `Bearer ${token}` : '',
-        },
-    };
-});
 
 // create a new class to instantiate for a user
 class AuthService {
@@ -49,11 +35,6 @@ class AuthService {
     login(idToken) {
         // Saves user token to localStorage
         localStorage.setItem('id_token', idToken);
-        // create a new Apollo client with the authLink and set it as the default client
-        const client = new ApolloClient({
-            link: authLink.concat(new HttpLink({ uri: '/graphql' })),
-            cache: new InMemoryCache(),
-        });
         window.location.assign('/');
     }
 

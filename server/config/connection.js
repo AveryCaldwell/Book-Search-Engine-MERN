@@ -5,7 +5,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googlebooks', {
     useUnifiedTopology: true,
     serverSelectionTimeoutMS: 5000,
     dbName: 'mydatabase',
-    // use findOneAndUpdate and findOneAndDelete instead of findByIdAndUpdate and findByIdAndDelete
 });
 
 module.exports = mongoose.connection;

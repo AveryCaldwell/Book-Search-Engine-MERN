@@ -1,5 +1,6 @@
 const { Tech, Matchup } = require('../models');
 
+
 const resolvers = {
     Query: {
         tech: async () => {

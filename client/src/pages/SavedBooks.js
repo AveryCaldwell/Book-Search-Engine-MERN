@@ -11,7 +11,6 @@ const SavedBooks = () => {
     // use useQuery hook to execute the QUERY_ME query on load and save it to userData variable
     const { loading, data } = useQuery(QUERY_ME);
     let userData = data?.me || {};
-    console.log(userData);
     // use useMutation hook to execute the REMOVE_BOOK mutation
     const [removeBook] = useMutation(REMOVE_BOOK);
 
@@ -51,7 +50,7 @@ const SavedBooks = () => {
             </div>
             <Container>
                 <h2 className='pt-5'>
-                    {userData.savedBooks.length
+                    {userData.savedBooks?.length
                         ? `Viewing ${userData.savedBooks.length} saved ${
                               userData.savedBooks.length === 1
                                   ? 'book'
@@ -60,10 +59,14 @@ const SavedBooks = () => {
                         : 'You have no saved books!'}
                 </h2>
                 <Row>
-                    {userData.savedBooks.map((book) => {
+                    {userData.savedBooks?.map((book) => {
                         return (
                             <Col md='4'>
-                                <Card key={book.bookId} border='dark'>
+                                <Card
+                                    key={book.bookId}
+                                    book={book}
+                                    border='dark'
+                                >
                                     {book.image ? (
                                         <Card.Img
                                             src={book.image}

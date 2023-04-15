@@ -54,7 +54,7 @@ const resolvers = {
                 );
                 return updatedUser;
             }
-            throw new AuthenticationError('You must be loggin in, duh!');
+            // throw new AuthenticationError('You must be loggin in, duh!');
         },
         //  removes a book from a user's list of saved books.
         removeBook: async (parent, { bookId }, context) => {

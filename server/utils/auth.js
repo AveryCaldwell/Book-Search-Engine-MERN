@@ -9,10 +9,13 @@ module.exports = {
         // allows token to be sent via req.body, req.query, or headers
         let token =
             req.body.token || req.query.token || req.headers.authorization;
-        // We split the token string into an array and return actual token
 
+        // ["Bearer", "<tokenvalue>"]
         if (req.headers.authorization) {
+            // split the token string into an array and return actual token
             token = token.split(' ').pop().trim();
+            // .pop() method is used to remove & return the last element of the array, which is the token.
+            // .trim() method is used to remove any whitespace characters from the beginning or end of the token.
         }
 
         if (!token) {
@@ -32,6 +35,7 @@ module.exports = {
     },
     signToken: function ({ username, email, _id }) {
         const payload = { username, email, _id };
+        
         return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },
 };

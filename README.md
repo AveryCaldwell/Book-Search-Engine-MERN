@@ -73,11 +73,7 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 
 ### __User experience 👤__
 
-<!-- TODO: update -->
-
-* The following dependencies are needed: 
-  - `npm install --save react-router-dom`
-* Versions:
+* The following versions are needed: 
   - react: ^17.0.2
   - react-dom: ^17.0.2
   - react-scripts: 4.0.3
@@ -92,16 +88,15 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 <br>
 
 ### __Screenshot 📸__
-<!-- TODO: update -->
 ​<br>
 
-![](/src/img/screenshot.png)
+![](./client/public/screenshot.png)
 ​
 ​<br>
 
 ### __Links 🔗__
-<!-- TODO: update -->
-- Live URL: []()
+
+- Live URL: [https://evening-brushlands-81697.herokuapp.com/](https://evening-brushlands-81697.herokuapp.com/)
 - Github Repository: [https://github.com/AveryCaldwell/Book-Search-Engine-MERN](https://github.com/AveryCaldwell/Book-Search-Engine-MERN)
 
 <br>
@@ -112,7 +107,6 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 
 
 ###  Built with 🔨
-<!-- TODO: update -->
 - React, MERN stack
 - Node.js/Express.js
 - Apollo, GraphQL, 
@@ -122,7 +116,7 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 <br>
 
 ###  __Useful resources 📚__
-<!-- TODO: update -->
+
 - Emojis: [https://github.com/ikatyang/emoji-cheat-sheet#office](https://github.com/ikatyang/emoji-cheat-sheet#office)
 - Deploy your application to Heroku with a MongoDB database using MongoDB Atlas: [Deploy with Heroku and MongoDB Atlas](https://coding-boot-camp.github.io/full-stack/mongodb/deploy-with-heroku-and-mongodb-atlas)
 
@@ -148,10 +142,4 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 <br>
 <hr>
 <br>
-
-
-<br>
-<hr>
-<br>
-
 
